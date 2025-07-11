@@ -5,5 +5,4 @@ const UseState = () => {
     <div>UseState</div>
   )
 }
-
 export default UseState

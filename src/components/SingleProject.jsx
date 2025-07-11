@@ -1,8 +1,9 @@
 import React, { use } from 'react'
 import { useParams } from 'react-router'
 
-import UseState from './hooks/UseState';
-import UseEffect from './hooks/UseEffect';
+import UseState from './hooks/state/UseState';
+import UseEffect from './hooks/effect/UseEffect';
+import UseReducer from './hooks/reducer/UseReducer';
 
 const SingleProject = () => {
   const {name} = useParams();
@@ -14,6 +15,9 @@ const SingleProject = () => {
     
     case 'useEffect':
       return <UseEffect />
+    
+    case 'useReducer':
+      return <UseReducer />
   }
 }
 

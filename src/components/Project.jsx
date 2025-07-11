@@ -10,7 +10,7 @@ const Project = () => {
     )
   })
   return (
-    <div className="p-[5%] grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <div className="p-15 grid grid-cols-1 sm:grid-cols-2 gap-5">
       {projectList}
     </div>
   )
