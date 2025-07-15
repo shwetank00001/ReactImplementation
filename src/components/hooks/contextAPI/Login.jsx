@@ -1,36 +1,42 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useState, useRef } from "react"
+import { useState, useRef, useContext } from "react"
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner"
 import LoginImage from '../../../assets/Login.png'
+import { globalContext } from "@/components/globalContext";
 
 const Login = () => {
 
     const [email, setEmail] = useState('');
     const passwordRef = useRef(null);
+    const {auth, setAuth} = useContext(globalContext);
+    console.log(auth);
 
     const nav = useNavigate();
 
     const handleSubmit = (e) => {
       e.preventDefault();
-
       if(email === window.localStorage.getItem("email") && passwordRef.current.value === window.localStorage.getItem("password")){
-        toast("Authorization Granted!");
-        setTimeout(() => {
-          nav('/project/admin')
-        }, 1000) 
+        setAuth(true);
+        if(auth){
+          toast("Authorization Granted!");
+          setTimeout(() => {
+            nav('/project/admin')
+          }, 1000) ;
+        }
       }
-
+      
       else if(!email){
         toast("Invalid Email Address")
       }
-
+      
       else if(passwordRef.current.value !== window.localStorage.getItem("password")){
         toast("Invalid credentials entered. Re-type!");
       }
     }
+    console.log("Auth in if", auth);
 
     //bg-[url("/assets/SignupSnippet.png")] bg-cover bg-center w-full
 

@@ -11,6 +11,7 @@ import ContextHook from './hooks/contextAPI/ContextHook';
 import Login from './hooks/contextAPI/Login';
 import SignUp from './hooks/contextAPI/SignUp';
 import AdminPage from './hooks/contextAPI/AdminPage';
+import ProtectedRoute from './ProtectedRoute';
 
 const SingleProject = () => {
   const {name} = useParams();
@@ -39,7 +40,7 @@ const SingleProject = () => {
       return <SignUp />
 
     case 'admin':
-      return <AdminPage />
+      return <ProtectedRoute><AdminPage /></ProtectedRoute>
   }
 }
 
