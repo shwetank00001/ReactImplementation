@@ -6,6 +6,7 @@ import UseEffect from './hooks/effect/UseEffect';
 import UseReducer from './hooks/reducer/UseReducer';
 import CustomHook from './hooks/customHook/CustomHook';
 import ContextHook from './hooks/contextAPI/ContextHook';
+import MemoHook from './hooks/memo/MemoHook';
 
 //auth routes for login and signup
 import Login from './hooks/contextAPI/Login';
@@ -32,6 +33,9 @@ const SingleProject = () => {
 
     case 'useContext':
       return <ContextHook />
+
+    case 'useMemo':
+      return <MemoHook />
 
     case 'login':
       return <Login />
