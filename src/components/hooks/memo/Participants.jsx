@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useMemo} from 'react';
 import {fakeData} from '../../../../public/data.js'
 import { Button } from '@/components/ui/button';
-
+import { Funnel } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,8 +27,6 @@ const Participants = React.memo(() => {
 
     const [peopleData, setPeopleData] = useState(fakeData);
 
-
-
     function ascendingLevelSort(){
         console.log("hi");
         const sortedLevel = [...peopleData].sort((x,y) => x.level - y.level);  
@@ -43,13 +41,33 @@ const Participants = React.memo(() => {
         setPeopleData(reverseLevel)
     }
 
+    function ascendingScoreSort(){
+        const ascendingScoreFirst = [...peopleData].sort((x,y) => x.score - y.score);
+        setPeopleData(ascendingScoreFirst)
+    }
+
+    function descendingScoreSort(){
+        const descScoreFirst  = [...peopleData].sort((x,y) => x.score - y.score).reverse();
+        setPeopleData(descScoreFirst)
+    }
+
+    function reset(){
+        setPeopleData(fakeData)
+    }
   
     const peopleDisplay = peopleData.map((item) => {
         return (
         <Card key={item.id}>
             <CardHeader>
-                <p>Level: {item.level}</p>
-                <p>Score: {item.score}</p>
+            <CardTitle className="text-2xl sm:text-3xl lg:text-5xl font-extrabold lg:font-bold">{item.name}</CardTitle>
+            <CardDescription className="text-xl sm:text-3xl lg:text-4xl font-semibold lg:font-bold">{item.country}</CardDescription>
+            <hr/>
+            <CardDescription className="flex gap-2">
+                <p className='font-bold'>Level: <span className='text-blue-500 font-bold'>{item.score}</span></p>
+            </CardDescription>
+            <CardDescription className="flex gap-2">
+                <p className='font-bold'>Total Score: <span className='text-blue-500 font-bold'>{item.score}</span></p>
+            </CardDescription>
             </CardHeader>
         </Card>
         )
@@ -59,21 +77,21 @@ const Participants = React.memo(() => {
 
     return (
         <>
-            <div>
+            <div className='mt-5'>
                 <DropdownMenu>
-                    <DropdownMenuTrigger >Filters</DropdownMenuTrigger>
-                    <DropdownMenuContent>
+                    <DropdownMenuTrigger className="text-white font-semibold rounded-sm bg-blue-500 p-2 border-black-100 hover:cursor-pointer"><Funnel /></DropdownMenuTrigger>
+                    <DropdownMenuContent className="p-2">
                         <DropdownMenuLabel>Sort by:</DropdownMenuLabel>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem onClick={ascendingLevelSort}>Level^ </DropdownMenuItem>
-                        <DropdownMenuItem onClick={descendingLevelSort}>Level down</DropdownMenuItem>
-                        <DropdownMenuItem>Score ^</DropdownMenuItem>
-                        <DropdownMenuItem>Score down</DropdownMenuItem>
-                        <DropdownMenuItem>reset</DropdownMenuItem>
+                        <DropdownMenuItem onClick={ascendingLevelSort}>Highest Level </DropdownMenuItem>
+                        <DropdownMenuItem onClick={descendingLevelSort}>Lowest Level</DropdownMenuItem>
+                        <DropdownMenuItem onClick={ascendingScoreSort}>Highest Scores</DropdownMenuItem>
+                        <DropdownMenuItem onClick={descendingScoreSort}>Lowest Score </DropdownMenuItem>
+                        <DropdownMenuItem onClick={reset}>Reset</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             </div>
-            <div>
+            <div className='grid grid-cols-2 gap-5 mt-5'>
                 {peopleDisplay} 
             </div>
         </>
