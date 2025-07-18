@@ -31,13 +31,13 @@ const Participants = React.memo(() => {
         console.log("hi");
         const sortedLevel = [...peopleData].sort((x,y) => x.level - y.level);  
         // sorted mutates and alters the same array -: react thinks that array is same itselfand hence it doesnt re render it, if i dont do sortedArray and use a function which doesnt directly affects the array -> in this case my state will re rende right?
-        console.log(sortedLevel);
+        // console.log(sortedLevel);
         setPeopleData(sortedLevel)
     }
     function descendingLevelSort(){
         console.log("hi");
         const reverseLevel = [...peopleData].sort((x,y) => x.level - y.level).reverse(); 
-        console.log(reverseLevel);
+        // console.log(reverseLevel);
         setPeopleData(reverseLevel)
     }
 
@@ -73,7 +73,9 @@ const Participants = React.memo(() => {
         )
     })
 
-    console.log(JSON.stringify(peopleData));
+    console.log("Participants Component Re rendered!")
+
+    // console.log(JSON.stringify(peopleData));
 
     return (
         <>
