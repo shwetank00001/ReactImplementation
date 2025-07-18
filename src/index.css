@@ -6,6 +6,11 @@
 body {
     background-color:  #121212;
     color: #a3a3a3;
+
+}
+
+body::selection {
+      background: #fff2a8;
 }
 
 @theme inline {

@@ -65,7 +65,7 @@ const Recipe = () => {
   return ( 
     <div className="flex flex-col lg:grid grid-cols-2 gap-5">
         {
-            loading ? "Loading" : recipeList
+             loading ? "": recipeList
         }
     </div>
   )
