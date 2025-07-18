@@ -20,12 +20,11 @@ const Login = () => {
       e.preventDefault();
       if(email === window.localStorage.getItem("email") && passwordRef.current.value === window.localStorage.getItem("password")){
         setAuth(true);
-        if(auth){
           toast("Authorization Granted!");
+          nav('/project/admin')
           setTimeout(() => {
-            nav('/project/admin')
           }, 1000) ;
-        }
+
       }
       
       else if(!email){
