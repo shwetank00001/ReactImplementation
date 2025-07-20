@@ -7,6 +7,7 @@ import UseReducer from './hooks/reducer/UseReducer';
 import CustomHook from './hooks/customHook/CustomHook';
 import ContextHook from './hooks/contextAPI/ContextHook';
 import MemoHook from './hooks/memo/MemoHook';
+import UseRef from './hooks/ref/UseRef';
 
 //auth routes for login and signup
 import Login from './hooks/contextAPI/Login';
@@ -27,6 +28,9 @@ const SingleProject = () => {
     
     case 'useReducer':
       return <UseReducer />
+
+    case 'useRef':
+      return <UseRef />
 
     case 'useFetch':
       return <CustomHook />
