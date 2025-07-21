@@ -10,6 +10,7 @@ const Homepage = () => {
         <div className="flex gap-5">
           <Button className="text-sm sm:text-xl hover:cursor-pointer" variant="homepage"><Link to={'/projects'}>Click here</Link></Button>
           <Button className="text-sm sm:text-xl hover:cursor-pointer" variant="homepage"><Link to={'/project/admin'}>Click here Admin</Link></Button>
+          <Button className="text-sm sm:text-xl hover:cursor-pointer" variant="homepage"><Link to={'/advanced/projectlist'}>Advanced Project</Link></Button>
         </div>
     </div>
   )
