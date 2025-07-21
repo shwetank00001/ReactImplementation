@@ -11,7 +11,7 @@ const ChatApp = () => {
 
   const [msgList, setList] = useState([]);
 
-  const socket = io.connect("http://localhost:5000/")
+  const socket = io.connect("https://chatsv-1.onrender.com/")
 
   const handleSubmit = (e) => {
     e.preventDefault()
