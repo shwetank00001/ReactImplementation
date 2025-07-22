@@ -10,14 +10,23 @@ const ChatApp = () => {
   const [message, setMessage] = useState('');
 
   const [msgList, setList] = useState([]);
+  const [userName, setUser] = useState('');
 
-  const socket = io.connect("https://chatsv-5.onrender.com/")
+
+  const socket = io.connect("http://localhost:5000/")
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     console.log(message);
-    socket.emit("send_message", {message: message })
+    socket.emit("send_message", {message: message, name:userName });
   }
+
+  useEffect(() => {
+    let name = prompt("Enter your name");
+    setUser(name);
+  }, [])
+  
+  console.log(userName)
 
   useEffect(() => {
     socket.on("receive_message", (data) => {

@@ -11,8 +11,8 @@ const AdvancedSingleProject = () => {
   console.log(appName);
 
   switch(appName){
-    case 'ChatApp':
-      return <ChatApp />
+    // case 'ChatApp':
+    //   return <ChatApp />
 
     case 'zustandEcom':
       return <ZustandEcom />
