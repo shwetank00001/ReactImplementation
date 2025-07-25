@@ -3,9 +3,12 @@ import { Link } from "react-router"
 
 const Project = () => {
   const projectList =  projectData.map((item)=> {
+
+    const arr = ["red","blue", "amber", "sky", "emerald", "purple"];
+    const randColor = Math.floor(Math.random() * arr.length)
     return (
       <div>
-        <Link to={`/project/${item}`} className="text-5xl sm:text-5xl md:text-6xl xl:text-8xl font-extrabold text-white ">{item}</Link>
+        <Link to={`/project/${item}`} className={`text-5xl sm:text-5xl md:text-6xl xl:text-8xl font-extrabold text-white `}>{item}</Link>
       </div>
     )
   })

@@ -1,23 +1,28 @@
 export const peoples = [
     {
         id: 1,
-        name: "Shwetank"
+        name: "Shwetank",
+        address: "Noida"
     },
     {
         id: 2,
-        name: "Aditya"
+        name: "Aditya",
+        address: "Delhi"
     },
     {
         id: 3,
-        name: "Akshat"
+        name: "Akshat",
+        address: "Ghaziabad"
     },
     {
         id: 4,
-        name: "Arjun"
+        name: "Arjun",
+        address: "Nagpur"
     },
     {
         id: 5,
-        name: "Pradhumn"
+        name: "Pradhumn",
+        address: "Bangalore"
     },
 
 ]

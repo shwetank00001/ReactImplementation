@@ -1,18 +1,31 @@
 import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-
 import StateSnippet from './StateSnippet';
-
 import { peoples } from './peopleData';
+
+import { Button } from '@/components/ui/button';
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
 
 const UseState = () => {
 
   const [person, setPerson ] = useState(peoples);
   const personList = person.map((item) => {
     return (
-      <div className='text-emerald-500 font-semibold ' key={item.id}>
-        <p >{item.name}</p>
-      </div>
+        <TableBody >
+          <TableRow >
+            <TableCell className={`p-3`}>{item.id}</TableCell>
+            <TableCell>{item.name}</TableCell>
+            <TableCell className={`text-right`}>{item.address}</TableCell>
+          </TableRow>
+        </TableBody>
+
     )
   })
   const [showStateCode, setShow] = useState(false);
@@ -26,15 +39,24 @@ const UseState = () => {
         <p><span className='text-white'>A healthy note 😝.</span> Never map over an object because map is an Array Protoype🤪.</p>
       </div>
       <div className='mt-5'>
-        <Button onClick = {() => setShow(item => !item) }>{showStateCode ? "Show useState snippet" : "Hide useState snippet"} </Button>
+        <Button className={`bg-red-600  hover:bg-red-400 hover:cursor-pointer`} onClick = {() => setShow(item => !item) }>{showStateCode ? "Hide useState snippet" : "Show useState snippet"} </Button>
         {showStateCode && <StateSnippet />}
       </div>
       <div className='mt-5'>
-        <p className='text-2xl mb-5 font-extrabold text-cyan-600'>
+        <p className='text-2xl mb-5 font-extrabold text-cyan-500'>
           Displaying every person from my "peopleData.js"
         </p>
-        {personList}
       </div>
+      <Table className="text-white border-1 rounded font-semibold ">
+        <TableHeader >
+          <TableRow  >
+            <TableHead className={`text-blue-500 p-3 text-lg font-bold`} >Rating</TableHead>
+            <TableHead className={`text-blue-500 text-lg  font-bold`}>Name</TableHead>
+            <TableHead className={`text-blue-500  text-lg  text-right  font-bold`}>Address</TableHead>
+          </TableRow>
+        </TableHeader>
+      {personList}
+      </Table>
     </div>
   )
 }
