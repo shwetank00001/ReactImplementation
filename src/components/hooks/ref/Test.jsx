@@ -1,7 +1,18 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { toast } from 'sonner';
 
 const Test = () => {
   const buttonRef = useRef(null);
@@ -13,27 +24,37 @@ const Test = () => {
   
   const handleSubmit =(e)=> {
     e.preventDefault();
-    let inputData = inputRef.current.value;
-    let textAreaData = textAreaRef.current.value;
-    const newData = {
-      id: new Date().getTime(),
-      name: inputData,
-      message: textAreaData
+    if(inputRef.current.value && textAreaRef.current.value){
+      let inputData = inputRef.current.value;
+      let textAreaData = textAreaRef.current.value;
+      const newData = {
+        id: new Date().getTime(),
+        name: inputData,
+        message: textAreaData
+      }
+      setValues((item) => [...item, newData]);
     }
-    setValues((item) => [...item, newData]);
+
+    else toast("Fill the form before submitting.")
   }
-  console.log("new Data", values);
+  // console.log("new Data", values);
 
   const displayMessage = values.map(function(item){
     return (
-      <div key={item.id}>
-        <p>{item.name}</p>
-        <p>{item.message}</p>
-        <footer>created at: {item.id}</footer>
-      </div>
+      <Card key={item.id}>
+        <CardHeader>
+          <CardDescription className={`text-3xl text-blue-600`}>{item.message}</CardDescription>
+          <hr />
+        </CardHeader>
+        <CardFooter>Created By: {item.name}</CardFooter>
+        <CardFooter>Created at: {item.id}</CardFooter>
+      </Card>
     )
   })
 
+  useEffect(() => {
+    inputRef.current.focus();
+  })
 
   return (
     <div className='p-15'>
@@ -44,22 +65,24 @@ const Test = () => {
       </div>
 
       <div className='mt-5'>
-        <p className='text-xl text-white'>A little example of useRef:- <code className='bg-blue-300 text-blue-800 p-1 rounded-xs'>  const buttonRef = useRef(null);</code> </p>
+        <code className='bg-blue-300 text-blue-800 p-1 rounded-xs'>  const buttonRef = useRef(null);</code>
       </div>
 
       <div className='mt-5'>
-        <Button className={`bg-sky-400 hover:bg-sky-600 text-black`} ref = {buttonRef} onClick={() => {console.log(buttonRef.current)}}>Click to get the DOM info in console.</Button>
+        <Button className={`bg-sky-400 hover:bg-sky-600 text-black`} ref = {buttonRef} onClick={() => {console.log(buttonRef.current)}}>Click to get button DOM info in console</Button>
       </div>
 
       <div className='mt-5'>
         <p>A basic name and message input area. Note: Open console to see how ref works.</p>
 
-        <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
-          <Input className={`text-white rounded-sm border-1`} ref={inputRef} placeholder="enter your name" />
-          <Textarea className={`text-white rounded-sm border-1`} ref={textAreaRef} placeholder="enter your message"/>
+        <form onSubmit={handleSubmit} className='flex flex-col gap-5 mt-5'>
+          <Input onClick= {() => {console.log("Input Node:", inputRef.current)}} className={`text-white rounded-sm border-1`} ref={inputRef} placeholder="Creator" />
+          <Textarea onClick= {() => {console.log("TextArea Node:", textAreaRef.current)}} className={`text-white rounded-sm border-1`} ref={textAreaRef} placeholder="Tell us, how do you feel? <3"/>
           <Button type="submit">Submit</Button>
         </form>
-        {displayMessage}
+        <div className=' grid sm:grid-cols-2 lg:grid-cols-3 gap-5'>
+          {displayMessage}
+        </div>
       </div>
     </div>
   )
