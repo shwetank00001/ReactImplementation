@@ -7,7 +7,7 @@ import UseReducer from './hooks/reducer/UseReducer';
 import CustomHook from './hooks/customHook/CustomHook';
 import ContextHook from './hooks/contextAPI/ContextHook';
 import MemoHook from './hooks/memo/MemoHook';
-import UseRef from './hooks/ref/UseRef';
+import UseRef from './hooks/ref/Test';
 
 //auth routes for login and signup
 import Login from './hooks/contextAPI/Login';
