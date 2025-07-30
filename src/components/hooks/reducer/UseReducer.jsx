@@ -4,6 +4,17 @@ import { useEffect, useReducer, useRef, useState } from "react";
 
 import ReducerSnippet from "./ReducerSnippet";
 
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { toast } from 'sonner';
+
 const UseReducer = () => {
 
   const todoRef = useRef(null);
@@ -42,10 +53,12 @@ const UseReducer = () => {
 
   const ele = state.todo.map((item) => {
     return (
-      <div className="flex justify-between mb-1 " key={item.id}>
-        <p>{item.singleTodoData}</p>
-        <Button onClick={() => remove(item.id)}>❌</Button>
-      </div>
+      <Card className={`break-all`} key={item.id}>
+        <CardHeader className={`flex justify-between `}>
+          <CardDescription className={`text-3xl text-blue-600 whitespace-normal`}>{item.singleTodoData}</CardDescription>
+          <CardDescription className={`text-3xl text-blue-600`}><Button onClick={() => remove(item.id)} className={`bg-purple-200 hover:bg-purple-300 hover:cursor-pointer`}>❌</Button></CardDescription>
+        </CardHeader>
+      </Card>
     )
   })
 
@@ -83,7 +96,10 @@ const UseReducer = () => {
           <Input className="border-1 shadow-1xl" placeholder="Add an item" type="text" ref={todoRef} required />
           <Button className="w-40 hover:cursor-pointer" type="submit" variant="blueButton"> Enter</Button>
         </form>
-        {ele}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+          {ele}
+        </div>
       </div>
     </div>
   )

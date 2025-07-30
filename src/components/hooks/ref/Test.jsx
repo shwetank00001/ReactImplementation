@@ -50,13 +50,13 @@ const Test = () => {
 
   const displayMessage = values.map(function(item){
     return (
-      <Card key={item.id}>
+      <Card className={`break-all`} key={item.id}>
         <CardHeader className={`flex justify-between`}>
           <CardDescription className={`text-3xl text-blue-600`}>{item.message}</CardDescription>
           <CardDescription className={`text-3xl text-blue-600`}><Button onClick={() => removeCard(item.id)} className={`bg-purple-200 hover:bg-purple-300 hover:cursor-pointer`}>❌</Button></CardDescription>
         </CardHeader>
           <hr />
-        <CardFooter>Created By: {item.name}</CardFooter>
+        <CardFooter >Created By: {item.name}</CardFooter>
         <CardFooter>Created at: {item.id}</CardFooter>
       </Card>
     )
