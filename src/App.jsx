@@ -16,8 +16,10 @@ import { globalContext } from "./components/globalContext"
 
 function App() {
     const [auth, setAuth] = useState(false);
+    const [lightMode, setLightMode] = useState(true);
+    
   return (
-    <globalContext.Provider value={{auth, setAuth}} >
+    <globalContext.Provider value={{auth, setAuth, lightMode, setLightMode}} >
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/projects" element={<Project />} />

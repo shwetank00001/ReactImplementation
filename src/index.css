@@ -4,9 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 body {
-    background-color:  #121212;
+   background-color:  #121212;
     color: #a3a3a3;
-
 }
 
 body::selection {
