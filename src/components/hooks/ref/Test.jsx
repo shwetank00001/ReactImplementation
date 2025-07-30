@@ -39,13 +39,23 @@ const Test = () => {
   }
   // console.log("new Data", values);
 
+  function removeCard(idParam){
+    console.log(idParam);
+    const newCards = values.filter(function(item){
+      return item.id !== idParam
+    });
+    console.log(newCards);
+    setValues(newCards )
+  }
+
   const displayMessage = values.map(function(item){
     return (
       <Card key={item.id}>
-        <CardHeader>
+        <CardHeader className={`flex justify-between`}>
           <CardDescription className={`text-3xl text-blue-600`}>{item.message}</CardDescription>
-          <hr />
+          <CardDescription className={`text-3xl text-blue-600`}><Button onClick={() => removeCard(item.id)} className={`bg-purple-200 hover:bg-purple-300 hover:cursor-pointer`}>❌</Button></CardDescription>
         </CardHeader>
+          <hr />
         <CardFooter>Created By: {item.name}</CardFooter>
         <CardFooter>Created at: {item.id}</CardFooter>
       </Card>
