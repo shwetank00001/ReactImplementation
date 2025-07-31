@@ -3,22 +3,12 @@ import {chartData} from '../../../../../chartData'
 import { useState } from 'react';
 
 const BarChart5 = () => {
-
-    // const [value, setValues] = useState(chartData);
-    // const barMap = value.map(function(item){
-    //     return (
-    //         <BarChart
-    //         xAxis={[{ id: 'names', data: [item.name], scaleType: 'band' }]}
-    //         series={[{ data: [item.salary] }]}
-    //         height={400}
-    //         />
-
-    //     )
-    // })
     const chartNames = chartData.map((i) => i.name);
     const chartSalary = chartData.map((s) => s.salary);
     console.log(chartSalary);
 
+
+  const colors = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#14b8a6', '#f97316', '#6366f1', '#84cc16', '#e11d48'];
 
 
     return (
@@ -28,16 +18,17 @@ const BarChart5 = () => {
                     {
                     id: 'barCategories',
                     data: chartNames ,
-                    label: "Friends"
+                    label: "Friends",
                     },
                 ]}
                 series={[
                     {
                     data: chartSalary,
-                    colorByCategory: true,
                     },
                 ]}
                 height={500}
+                grid={{ vertical: true, horizontal: true }}
+                
             />
         </div>
     )
