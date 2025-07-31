@@ -8,7 +8,7 @@ import CustomHook from './hooks/customHook/CustomHook';
 import ContextHook from './hooks/contextAPI/ContextHook';
 import MemoHook from './hooks/memo/MemoHook';
 import UseRef from './hooks/ref/Test';
-
+import CallbackHook from './hooks/callback/CallbackHook';
 //auth routes for login and signup
 import Login from './hooks/contextAPI/Login';
 import SignUp from './hooks/contextAPI/SignUp';
@@ -40,6 +40,9 @@ const SingleProject = () => {
 
     case 'useMemo':
       return <MemoHook />
+
+    case 'useCallback':
+      return <CallbackHook />
 
     case 'login':
       return <Login />

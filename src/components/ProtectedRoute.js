@@ -5,8 +5,7 @@ import { Navigate } from "react-router";
 const ProtectedRoute = ({children}) => {
     const {auth} = useContext(globalContext)
   
-    return auth ? children : children
-
+    return auth ? children : "Go back -> Projects -> Select useContext"
 }
 
 export default ProtectedRoute
