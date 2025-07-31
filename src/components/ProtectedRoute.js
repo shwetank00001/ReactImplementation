@@ -6,6 +6,7 @@ const ProtectedRoute = ({children}) => {
     const {auth} = useContext(globalContext)
   
     return auth ? children : "Go back -> Projects -> Select useContext"
+
 }
 
 export default ProtectedRoute

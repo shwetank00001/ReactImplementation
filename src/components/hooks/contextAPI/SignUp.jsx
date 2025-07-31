@@ -55,7 +55,7 @@ const SignUp = () => {
               <Button type="submit" className= "mt-5 sm:text-xl bg-indigo-600 hover:bg-amber-200 hover:text-black hover:cursor-pointer" >Submit</Button>
           </form>
           <div className="mt-5">
-            <img src={SignupImage} />
+            <img loading="lazy" src={SignupImage} />
           </div>
       </div>
     )

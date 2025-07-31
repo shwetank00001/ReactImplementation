@@ -59,7 +59,7 @@ const Login = () => {
           </div>
 
         <div className="mt-5">
-            <img src={LoginImage} />
+            <img loading="lazy" src={LoginImage} />
         </div>
       </div>
     )
