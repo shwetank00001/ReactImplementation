@@ -28,8 +28,19 @@ const InstaCard = () => {
         }
         fetchingPosts()
     }, []);
-    console.log("postData", postData)
+    console.log("postData", postData);
 
+
+    function increaseLikes(idParam){
+        setPostData(function(item){
+            return {
+                ...item,
+                reactions: {
+                    likes : item.reactions.like + 1
+                }
+            }
+        })
+    }
     const ele = postData.map(function(item){
         return (
             <Card>
@@ -38,7 +49,7 @@ const InstaCard = () => {
                     <CardDescription>{item.body}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <Button onClick={() => increaseLikes(item.id)}>👍🏻 {item.reactions.likes}</Button>
+                    <Button onClick={() => increaseLikes(item.reactions.likes)}>👍🏻 {item.reactions.likes}</Button>
                     {/* <p>Dislikes: {item.reactions.dislikes}</p> */}
                 </CardContent>
                 <CardFooter>
