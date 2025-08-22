@@ -33,7 +33,13 @@ const CallbackHook = () => {
 
   return (
     <div className='p-15'>
-      <InstaCard />
+
+      <div>
+        <p className='text-xl text-white'><span className='text-5xl font-bold text-yellow-400 '>useCallback</span> is used to memoize a function. What does memoization of a function mean? It means that if a Component re renders, the value of the function remains same, i.e the calling/calculation of the function doesn't take place and the stored value on the initial render is used.</p>
+      </div>
+      <div className='mt-5'>
+        <InstaCard />
+      </div>
     </div>
   )
 }

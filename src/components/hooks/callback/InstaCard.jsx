@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -11,9 +10,9 @@ import {
 import { Button } from '@mui/material';
 
 const InstaCard = () => {
+
     const url = 'https://dummyjson.com/posts';
     const [postData, setPostData]= useState([]);
-
 
     useEffect(()=> {
         async function fetchingPosts(){
@@ -31,25 +30,32 @@ const InstaCard = () => {
     console.log("postData", postData);
 
 
-    function increaseLikes(idParam){
-        setPostData(function(item){
-            return {
-                ...item,
+    function increaseLikes(idParam) {
+        setPostData(function(prevPosts) {
+            return prevPosts.map(function(post) {
+            if (post.id === idParam) {
+                return {
+                ...post,
                 reactions: {
-                    likes : item.reactions.like + 1
+                    ...post.reactions,
+                    likes: post.reactions.likes + 1
                 }
+                };
+            } else {
+                return post;
             }
-        })
+            });
+        });
     }
     const ele = postData.map(function(item){
         return (
-            <Card>
+            <Card className={`bg-purple-100`}> 
                 <CardHeader>
-                    <CardTitle>{item.title}</CardTitle>
+                    <CardTitle className={`text-xl`}>{item.title}</CardTitle>
                     <CardDescription>{item.body}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <Button onClick={() => increaseLikes(item.reactions.likes)}>👍🏻 {item.reactions.likes}</Button>
+                    <Button onClick={() => increaseLikes( item.id,item.reactions.likes)}>👍🏻 {item.reactions.likes}</Button>
                     {/* <p>Dislikes: {item.reactions.dislikes}</p> */}
                 </CardContent>
                 <CardFooter>
@@ -58,7 +64,7 @@ const InstaCard = () => {
         )
     })
   return (
-    <div className='grid grid-cols-4 gap-5'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5'>
         {ele}
     </div>
   )
