@@ -55,7 +55,7 @@ const UseEffect = () => {
       </div>
 
       <div className="mt-10">
-        <p>Click here for a little pop-up.<span><Button onClick={handleAdd}>Click Me!</Button></span></p>
+        <p>Click here for a little pop-up. <span><Button className='bg-blue-600 hover:bg-blue-300 hover:text-black hover:cursor-pointer' onClick={handleAdd}>Click Me!</Button></span></p>
       </div>
 
     </div>
