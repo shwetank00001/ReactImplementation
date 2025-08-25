@@ -1,5 +1,5 @@
 import { BarChart } from '@mui/x-charts/BarChart';
-import {chartData} from '../../../../../chartData'
+import {chartData} from '../../../../../public/chartData'
 import { useState } from 'react';
 
 const BarChart5 = () => {
