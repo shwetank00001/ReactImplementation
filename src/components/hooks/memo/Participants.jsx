@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useMemo} from 'react';
+import React, {useEffect, useState, useMemo, useRef} from 'react';
 import {fakeData} from '../../../../public/data.js'
 import { Button } from '@/components/ui/button';
 import { Funnel } from 'lucide-react';
@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-
+import { Input } from "@/components/ui/input"
 
 import {
   Card,
@@ -26,6 +26,10 @@ import {
 const Participants = React.memo(() => {
 
     const [peopleData, setPeopleData] = useState(fakeData);
+
+    // const [searchedData, setSearchedData] = useState('');
+    const searchRef = useRef(null);
+    const [filteredData, setFilteredData] = useState([])
 
     function ascendingLevelSort(){
         console.log("hi");
@@ -53,6 +57,17 @@ const Participants = React.memo(() => {
 
     function reset(){
         setPeopleData(fakeData)
+    }
+
+
+    function handleSearchName(){
+        console.log(searchRef.current.value);
+        const dataFilter = peopleData.filter(function(item){
+            return item.name.toLowerCase().includes(searchRef.current.value);
+        })
+        setFilteredData(dataFilter);
+        console.log(filteredData);
+        setPeopleData(dataFilter)
     }
   
     const peopleDisplay = peopleData.map((item) => {
@@ -92,6 +107,11 @@ const Participants = React.memo(() => {
                         <DropdownMenuItem onClick={reset}>Reset</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
+            </div>
+            <div className='mt-5 flex gap-10'>
+                {/* <Input placeholder = "Search for a participant..." type="text" value={searchedData} onChange={(e) => setSearchedData(e.target.value)}/> */}
+                <Input placeholder = "Search for a participant..." type="text" ref={searchRef}/>
+                <Button onClick={handleSearchName}>Search</Button>
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5'>
                 {peopleDisplay} 
